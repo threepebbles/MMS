@@ -1,6 +1,7 @@
 /*
 File Merge
 Category: Knuth Optimization
+
 C[i][j]: 구간 [i,j]의 누적합
 dp[i][j]: 구간 [i,j]를 합치는 최소 비용 
 1) dp[i][j] = min_{i<=k<=j} (dp[i][k]+dp[k+1][j]) + C[i][j]
@@ -16,7 +17,6 @@ A[i][j]: D[i][j]가 최소가 되기 위한 k(i<k<j)
 Therefore, A[i][j-1] <= A[i][j] <= A[i+1][j]
 
 Time Complexity: O(n^2)
-
 */
 #include <bits/stdc++.h>
 using namespace std;
