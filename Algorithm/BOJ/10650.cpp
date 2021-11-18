@@ -1,3 +1,16 @@
+/*
+Marathon
+Category: segment tree
+Time Complexity: O(q*log(n))
+
+1) i->j
+no skip: dp[0] = diff(i, i+1) + diff(i+1, i+2) + ... + diff(j-1, j)
+skip 1 : dp[1] = diff(i, i+1) + ... + diff(k-2, k-1) + diff(k-1, k+1) + ... + diff(j-1, j);
+
+find k that minimizes dp[1] == find k that maximizes dp[0] - dp[1]
+dp[0] - dp[1] = diff(k-1, k) + diff(k, k+1) - diff(k-1, k+1)
+
+*/
 #include <bits/stdc++.h>
 using namespace std;
 
