@@ -3,7 +3,7 @@ Marathon
 Category: segment tree
 Time Complexity: O(q*log(n))
 
-1) i->j
+i->j
 no skip: dp[0] = diff(i, i+1) + diff(i+1, i+2) + ... + diff(j-1, j)
 skip 1 : dp[1] = diff(i, i+1) + ... + diff(k-2, k-1) + diff(k-1, k+1) + ... + diff(j-1, j);
 
