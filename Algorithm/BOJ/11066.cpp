@@ -4,15 +4,16 @@ Category: Knuth Optimization
 
 C[i][j]: 구간 [i,j]의 누적합
 dp[i][j]: 구간 [i,j]를 합치는 최소 비용 
-1) dp[i][j] = min_{i<=k<=j} (dp[i][k]+dp[k+1][j]) + C[i][j]
-dp[i+1][j] = min_{i+1<=k<=j} (dp[i+1][k]+dp[k+1][j]) + C[i+1][j]
+1) dp[i][j] = min_{i<=k<j} (dp[i][k]+dp[k+1][j]) + C[i][j]
+dp[i+1][j] = min_{i+1<=k<j} (dp[i+1][k]+dp[k+1][j]) + C[i+1][j]
 -> dp[i+1][j] = D[i][j], C[i+1][j] = C'[i][j]
-D[i][j] = min_{i<k<=j} (D[i][k]+D[k][j]) + C'[i][j]
+D[i][j] = min_{i<k<j} (D[i][k]+D[k][j]) + C'[i][j]
 
 2) Quadrangle Inequalty
 C'[a][c]+C'[b][d] <= C'[a][d] + C'[b][c], a<=b<=c<=d
 
-3) C'[b][c]<=C'[a][d], a<=b<=c<=d
+3) Monotonicity
+C'[b][c]<=C'[a][d], a<=b<=c<=d
 A[i][j]: D[i][j]가 최소가 되기 위한 k(i<k<j)
 Therefore, A[i][j-1] <= A[i][j] <= A[i+1][j]
 
