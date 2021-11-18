@@ -15,6 +15,7 @@ C'[a][c]+C'[b][d] <= C'[a][d] + C'[b][c], a<=b<=c<=d
 3) Monotonicity
 C'[b][c]<=C'[a][d], a<=b<=c<=d
 A[i][j]: D[i][j]가 최소가 되기 위한 k(i<k<j)
+
 Therefore, A[i][j-1] <= A[i][j] <= A[i+1][j]
 
 Time Complexity: O(n^2)
