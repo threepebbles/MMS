@@ -23,9 +23,8 @@ int main() {
 
     queue<int> que;
     for(int i=1;i<=n;i++) {
-        if(in_deg[i]==0) {
+        if(in_deg[i]==0)
             que.push(i);
-        }
     }
 
     vector<int> ans;
