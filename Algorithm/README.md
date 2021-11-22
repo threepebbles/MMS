@@ -6,7 +6,7 @@
 ## Overall Algorithms
 * [cp-algorithms](https://cp-algorithms.com/)
 * [kks227님 블로그](https://blog.naver.com/kks227)
-* [Competitice Programming 4](http://www.kyobobook.co.kr/product/detailViewEng.laf?mallGb=ENG&ejkGb=BNT&barcode=9781716745515)
+* [Competitive Programming 4](http://www.kyobobook.co.kr/product/detailViewEng.laf?mallGb=ENG&ejkGb=BNT&barcode=9781716745515)
 
 ## Contests
 * [Codeforces](https://codeforces.com/)
