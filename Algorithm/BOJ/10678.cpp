@@ -5,10 +5,15 @@ typedef struct E{
     int to, cost;
 };
 
-const int MAXN = 16;
+typedef struct V{
+    int idx, cost;
+};
+
+const int MAXN = 100;
 const int INF = 1e9;
 
-int G1[MAXN][MAXN], G2[MAXN][MAXN];
+bool chk[MAXN][10001];  // chk[i][j]: checking taken time j from 1 to i
+vector<E> G1[MAXN], G2[MAXN];
 vector<int> cand1, cand2;
 
 
@@ -16,47 +21,49 @@ int main() {
     int n, m;
     scanf("%d %d", &n, &m);
     
-
-    for(int i=0;i<n;i++) {
-        for(int j=i+1;j<n;j++) {
-            G1[i][j] = G2[i][j] = INF;
-        }
-    }
-
-    int u, v, a, b;
+    int u, v, a, b; // a,b <= 100
     for(int i=0;i<m;i++) {
         scanf("%d %d %d %d", &u, &v, &a, &b);
         u--, v--;
-        G1[u][v] = a;
-        G2[u][v] = b;
+        G1[u].push_back({v, a});
+        G2[u].push_back({v, b});
+    }
+
+    queue<V> que;
+    que.push({0, 0});
+    chk[0][0] = true;
+    while(!que.empty()) {
+        V cur = que.front();
+        que.pop();
+
+        for(E e: G1[cur.idx]) {
+            if(chk[e.to][e.cost+cur.cost]) continue;
+            chk[e.to][e.cost+cur.cost] = true;
+            que.push({e.to, e.cost+cur.cost});
+        }
+    }
+    for(int i=0;i<=n*100;i++) {
+        if(chk[n-1][i]) cand1.push_back(i);
+    }
+
+    memset(chk, 0, sizeof(chk));
+    que.push({0, 0});
+    chk[0][0] = true;
+    while(!que.empty()) {
+        V cur = que.front();
+        que.pop();
+
+        for(E e: G2[cur.idx]) {
+            if(chk[e.to][e.cost+cur.cost]) continue;
+            chk[e.to][e.cost+cur.cost] = true;
+            que.push({e.to, e.cost+cur.cost});
+        }
+    }
+    for(int i=0;i<=n*100;i++) {
+        if(chk[n-1][i]) cand2.push_back(i);
     }
 
     int ans = INF;
-    for(int i=1;i<(1<<n);i++) {
-        if(!(i&1) || !((i>>(n-1))&1)) continue;
-        
-        u = 0, v = -1;
-        int sum1 = 0, sum2 = 0;
-        bool inv = false;
-        for(int j=1;j<n;j++) {
-            if((i>>j)&1) {
-                v = j;
-                if(G1[u][v]==INF) {
-                    inv = true;
-                    break;
-                }
-                else {
-                    sum1 += G1[u][v];
-                    sum2 += G2[u][v];
-                }
-                u = j;
-            }
-        }
-        if(inv) continue;
-
-        cand1.push_back(sum1);
-        cand2.push_back(sum2);
-    }
     sort(cand1.begin(), cand1.end());
     sort(cand2.begin(), cand2.end());
     for(int x: cand1) {
