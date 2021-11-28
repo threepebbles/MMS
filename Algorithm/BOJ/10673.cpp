@@ -16,11 +16,11 @@ typedef struct V{
     }
 };
 
-const int MAXROUTE = 1001;
+const int MAXROUTE = 101;
 const int MAXCITY = 1001;
 const ll INF = 2e18;
 
-int cur_route[101];
+int cur_route[MAXROUTE];
 vector<E> G[MAXCITY];
 int fcnt[MAXCITY];  // # of individual flights
 bool chk[MAXCITY];
