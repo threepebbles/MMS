@@ -7,6 +7,7 @@ const int INF = 1e9;
 vector<int> G[MAXN];
 bool visited[MAXN];
 
+
 int main() {
     int A,B,n;
     scanf("%d %d %d", &A, &B, &n);
