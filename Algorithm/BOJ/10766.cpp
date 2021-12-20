@@ -1,8 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
-typedef pair<int, int> pii;
 
-const int MAXN = 4000;
+typedef pair<int, int> pii;
 
 vector<pii> bales;
 
